@@ -15,7 +15,7 @@
               </li>
 
               <li class=" breadcrumb-item">
-                <a href="javascript:void(0)">InwardUpload </a>
+                <a href="javascript:void(0)">PDCUpload </a>
               </li>
 
             </ol>
@@ -36,13 +36,13 @@
           <p class=" text-sm mb-0"></p>
         </div>
         <div class="select_file">
-          <div><input type="file" id="profile" (change)="ReadExcel($event)" placeholder="Upload Image" class="form-control " /></div><br>
+          <div><input type="file" id="profile" (change)="ReadPDCExcel($event)" placeholder="Upload Image" class="form-control " /></div><br>
         </div>
 
-          <div><button type="button"(click)="Upload()">Upload</button></div><br>
+          <div><button type="button"(click)="UploadPDCExcel()">Upload</button></div><br>
           <div><button type="button">
-            <a href="../../../../assets/Excel/InwardUploadTemplate.xlsx"
-          target="_blank" download="InwardUploadTemplate.xlsx">Download Now</a>
+            <a href="../../../../assets/Excel/PDCUploadTemplate.xlsx"
+          target="_blank" download="PDCUploadTemplate.xlsx">Download Now</a>
         </button></div>
         <div class="dataTables_wrapper checklist-table w-100" id="grid">
              

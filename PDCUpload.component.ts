@@ -15,9 +15,9 @@ export enum SelectionType {
 }
 @Component({
   selector: "app-users",
-  templateUrl: "InwardUpload.component.html",
+  templateUrl: "PDCUpload.component.html",
 })
-export class InwardUploadComponent implements OnInit {
+export class PDCUploadComponent implements OnInit {
   ExcelData:any;
   entries: number = 10;
   selected: any[] = [];
@@ -48,20 +48,7 @@ export class InwardUploadComponent implements OnInit {
     private _onlineExamService: OnlineExamServiceService,
     private _global: Globalconstants,
     public toastr: ToastrService,
-  ) {  this.data = [
-    [2019, 1, '50', '20', '25', '20'],
-    [2019, 2, '80', '20', '25', '20'],
-    [2019, 3, '120', '20', '25', '20'],  
-    [2019, 4, '75', '20', '25', '20'],  
-    [2019, 5, '60', '20', '25', '20'],  
-    [2019, 6, '80', '20', '25', '20'],  
-    [2019, 7, '95', '20', '25', '20'],  
-    [2019, 8, '55', '20', '25', '20'],  
-    [2019, 9, '45', '20', '25', '20'],  
-    [2019, 10, '80', '20', '25', '20'],  
-    [2019, 11, '90', '20', '25', '20'],  
-    [2019, 12, '110', '20', '25', '20'],      
-  ];} 
+  ) {  } 
   ngOnInit() {
     
       this.loading=false;
@@ -75,8 +62,8 @@ export class InwardUploadComponent implements OnInit {
   link.setAttribute('download', 'file_name.pdf');
   }
   //Newly added code 
-    Upload(){
-      const apiUrl = this._global.baseAPIUrl + "InwardUpload/Create";
+  UploadPDCExcel(){
+      const apiUrl = this._global.baseAPIUrl + "PDCUpload/Create";
         this._onlineExamService
           .postData(this.ExcelData, apiUrl)
           // .pipe(first())
@@ -91,7 +78,7 @@ export class InwardUploadComponent implements OnInit {
       // console.log('called');
       // this._onlineExamService.generateExcel();
      }
-  ReadExcel(event:any){
+     ReadPDCExcel(event:any){
     let file=event.target.files[0];
     let fileReader=new FileReader();
     fileReader.readAsBinaryString(file);
@@ -151,34 +138,18 @@ prepareTableData(tableData, headerList) {
 //{
   let tableHeader: any = [
     { field: 'srNo', header: "SR NO", index: 1 },
-    { field: 'AGEEMENTNO', header: 'AGEEMENTNO', index: 3 },
-    { field: 'BARCODE', header: 'BARCODE', index: 2 },
-     { field: 'PRODUCTNAME', header: 'PRODUCTNAME', index: 3 },
-    { field: 'DISBURSEMENTDATE', header: 'DISBURSEMENTDATE', index: 3 },
-    { field: 'SYSTEM', header: 'SYSTEM', index: 3 },
-    { field: 'CASESTARTERBRANCH', header: 'CASESTARTERBRANCH', index: 3 },
-    { field: 'GENERATEDON', header: 'GENERATEDON', index: 3 },
-    { field: 'CPUID', header: 'CPUID', index: 3 },
-    { field: 'batch_id', header: 'batch_id', index: 3 },
-    { field: 'RepaymentMode', header: 'RepaymentMode', index: 3 },
-    { field: 'VendorID', header: 'VendorID', index: 3 },
+    { field: 'AGREEMENTID', header: 'AGREEMENTID', index: 3 },
+    { field: 'APPROVALDATE', header: 'APPROVALDATE', index: 2 },
+     { field: 'SecurityPDCCHQCount', header: 'SecurityPDCCHQCount', index: 3 },
 
   ];
  
   tableData.forEach((el, index) => {
     formattedData.push({
       'srNo': parseInt(index + 1),
-      'AGEEMENTNO':el.AGEEMENTNO,
-      'BARCODE':el.BARCODE,
-      'PRODUCTNAME': el.PRODUCTNAME,
-      'DISBURSEMENTDATE': el.DISBURSEMENTDATE,
-      'SYSTEM': el.SYSTEM,
-      'CASESTARTERBRANCH': el.CASESTARTERBRANCH,
-      'GENERATEDON': el.GENERATEDON,
-      'CPUID':el.CPUID,
-      'batch_id':el.batch_id,
-      'RepaymentMode':el.RepaymentMode,
-      'VendorID':el.VendorID
+      'AGREEMENTID':el.AGREEMENTID,
+      'APPROVALDATE':el.APPROVALDATE,
+      'SecurityPDCCHQCount': el.SecurityPDCCHQCount,
     
     });
  
